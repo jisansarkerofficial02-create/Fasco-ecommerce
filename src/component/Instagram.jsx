@@ -29,25 +29,19 @@ const Instagram = ({
       </p>
     </header>
 
-    <div className="relative mt-14 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-      <div className="relative min-w-[1000px] md:min-w-0">
-      <div aria-hidden="true" className="absolute inset-x-0 top-[1.92vw] h-[16vw] bg-[#f2f0ee]" />
-      <div className="relative flex h-[clamp(238px,19.84vw,420px)] w-full items-center overflow-hidden">
+    <div className="relative mt-10 px-4 sm:mt-14 sm:px-0">
+      <div className="relative mx-auto max-w-[1400px]">
+      <div aria-hidden="true" className="absolute inset-x-0 top-[12%] h-[76%] bg-[#f2f0ee]" />
+      <div className="relative grid grid-cols-2 items-center sm:grid-cols-4 lg:flex lg:h-[clamp(238px,19.84vw,420px)] lg:w-full lg:overflow-hidden">
         {images.map((item, index) => {
           const image = typeof item === 'string' ? item : item.src
           const alt = typeof item === 'string' ? `Instagram post ${index + 1}` : item.alt || `Instagram post ${index + 1}`
           const width = typeof item === 'string' ? undefined : item.width
-          const shape = index === 0 || index === images.length - 1
-            ? 'aspect-[320/308]'
-            : index % 2 === 1
-              ? 'aspect-[256/380]'
-              : 'aspect-[256/308]'
-
           return (
             <div
               key={(typeof item === 'string' ? null : item.id) || `instagram-${index}`}
-              style={{ flexBasis: width || `${100 / images.length}%` }}
-              className={`relative ${shape} min-w-0 shrink-0 overflow-hidden bg-[#e7e4e2] transition-transform duration-200 hover:z-10 hover:scale-[1.03]`}
+              style={{ '--desktop-basis': width || `${100 / images.length}%` }}
+              className="relative aspect-[4/5] min-w-0 overflow-hidden bg-[#e7e4e2] transition-transform duration-200 hover:z-10 hover:scale-[1.03] sm:aspect-[3/4] lg:h-full lg:flex-[0_0_var(--desktop-basis)] lg:aspect-auto"
             >
               {image && <img src={image} alt={alt} className="h-full w-full object-contain" />}
             </div>

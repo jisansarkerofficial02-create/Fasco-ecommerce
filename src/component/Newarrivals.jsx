@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Button from './Button'
 import Newarrivalscard from './Newarrivalscard'
 import newarrivals1 from '../assets/newarrivals1.svg'
@@ -36,8 +37,8 @@ const Newarrivals = ({
   viewMoreText = 'View More',
   onViewMore,
 }) => {
+  const navigate = useNavigate()
   const [selectedCategory, setSelectedCategory] = useState(initialCategory)
-  const [viewMoreMessage, setViewMoreMessage] = useState('')
   const currentCategory = activeCategory ?? selectedCategory
   const hasCategorizedProducts = products.some((product) => product.categories || product.category)
   const visibleProducts = hasCategorizedProducts
@@ -49,7 +50,6 @@ const Newarrivals = ({
 
   const selectCategory = (category) => {
     if (activeCategory === undefined) setSelectedCategory(category)
-    setViewMoreMessage('')
     onCategoryChange?.(category)
   }
 
@@ -107,14 +107,13 @@ const Newarrivals = ({
           <Button
             onClick={() => {
               if (onViewMore) onViewMore()
-              else setViewMoreMessage("You're viewing all the latest arrivals.")
+              else navigate('/shop')
             }}
             className="!min-h-9 !min-w-[130px] !rounded-md !px-8 !py-3 !text-[11px]"
           >
             {viewMoreText}
           </Button>
         </div>
-        {viewMoreMessage && <p role="status" className="mt-3 text-center text-xs text-[#777]">{viewMoreMessage}</p>}
       </div>
     </section>
   )

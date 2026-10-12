@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Button from './Button'
 import dealsArrowLeft from '../assets/deals-arrow-left.png'
 import dealsArrowRight from '../assets/deals-arrow-right.png'
@@ -68,10 +69,60 @@ const Deals = ({
 }) => {
   const carouselRef = useRef(null)
   const [activeSlide, setActiveSlide] = useState(0)
+  const countdownDuration = countdown.reduce((seconds, item) => {
+    const value = Number.parseInt(item.value, 10) || 0
+    const label = item.label.toLowerCase()
+    if (label.startsWith('day')) return seconds + value * 86400
+    if (label === 'hr' || label.startsWith('hour')) return seconds + value * 3600
+    if (label.startsWith('min')) return seconds + value * 60
+    if (label.startsWith('sec')) return seconds + value
+    return seconds
+  }, 0)
+  const countdownEndsAt = useRef(Date.now() + countdownDuration * 1000)
+  const [countdownValues, setCountdownValues] = useState(() => countdown.map((item) => item.value))
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const updateCountdown = () => {
+      let secondsRemaining = Math.max(0, Math.floor((countdownEndsAt.current - Date.now()) / 1000))
+      const values = countdown.map((item) => {
+        const label = item.label.toLowerCase()
+        let value = Number.parseInt(item.value, 10) || 0
+        if (label.startsWith('day')) { value = Math.floor(secondsRemaining / 86400); secondsRemaining %= 86400 }
+        else if (label === 'hr' || label.startsWith('hour')) { value = Math.floor(secondsRemaining / 3600); secondsRemaining %= 3600 }
+        else if (label.startsWith('min')) { value = Math.floor(secondsRemaining / 60); secondsRemaining %= 60 }
+        else if (label.startsWith('sec')) value = secondsRemaining % 60
+        return String(value).padStart(2, '0')
+      })
+      setCountdownValues(values)
+    }
+    updateCountdown()
+    const timer = window.setInterval(updateCountdown, 1000)
+    return () => window.clearInterval(timer)
+  }, [countdown])
+  const goToProducts = () => {
+    const productSection = document.getElementById('new-arrivals')
+    if (productSection) productSection.scrollIntoView({ behavior: 'smooth' })
+    else navigate('/shop')
+  }
   const moveToSlide = (index) => {
     const nextIndex = Math.max(0, Math.min(slides.length - 1, index))
-    carouselRef.current?.scrollTo({ left: nextIndex * 250, behavior: 'smooth' })
+    const cards = carouselRef.current?.children
+    if (cards?.[nextIndex]) {
+      const firstCardLeft = cards[0].offsetLeft
+      carouselRef.current.scrollTo({ left: cards[nextIndex].offsetLeft - firstCardLeft, behavior: 'smooth' })
+    }
     setActiveSlide(nextIndex)
+  }
+
+  const updateActiveSlide = (event) => {
+    const cards = [...event.currentTarget.children]
+    const firstCardLeft = cards[0]?.offsetLeft ?? 0
+    const currentIndex = cards.reduce((closest, card, index) => {
+      const distance = Math.abs((card.offsetLeft - firstCardLeft) - event.currentTarget.scrollLeft)
+      return distance < closest.distance ? { index, distance } : closest
+    }, { index: 0, distance: Infinity }).index
+    setActiveSlide(currentIndex)
   }
 
   return (
@@ -84,7 +135,7 @@ const Deals = ({
         <p className="mt-3 max-w-[340px] pb-[14px] font-[Poppins,sans-serif] text-[11px] leading-5 text-[#777]">
           {description}
         </p>
-        <Button onClick={() => document.getElementById('new-arrivals')?.scrollIntoView({ behavior: 'smooth' })} className="mt-[14px] mb-5 !min-h-[52px] !min-w-[150px] !rounded-md !px-[50px] !py-[20px] !text-[11px]">
+        <Button onClick={goToProducts} className="mt-[14px] mb-5 !min-h-[52px] !min-w-[150px] !rounded-md !px-[50px] !py-[20px] !text-[11px]">
           {buttonText}
         </Button>
 
@@ -93,10 +144,10 @@ const Deals = ({
             {countdownTitle}
           </h3>
           <div className="mt-3 flex flex-wrap gap-2 sm:gap-3">
-            {countdown.map((item) => (
+            {countdown.map((item, index) => (
               <div key={item.label} className="flex min-w-[54px] flex-col items-center">
                 <span className="flex h-12 min-w-[50px] items-center justify-center rounded-md bg-white px-2 shadow-[0_2px_8px_rgb(0_0_0_/_14%)]">
-                  <DigitalNumber value={item.value} label={item.label} />
+                  <DigitalNumber value={countdownValues[index]} label={item.label} />
                 </span>
                 <span className="mt-2 font-[Poppins,sans-serif] text-sm text-[#484848]">
                   {item.label}
@@ -110,7 +161,7 @@ const Deals = ({
       <div className="relative min-w-0">
         <div
           ref={carouselRef}
-          onScroll={(event) => setActiveSlide(Math.min(slides.length - 1, Math.max(0, Math.round(event.currentTarget.scrollLeft / 250))))}
+          onScroll={updateActiveSlide}
           className="flex items-start gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:pb-0 lg:-ml-[111px]"
         >
           {slides.map((slide, index) => (

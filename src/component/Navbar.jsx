@@ -1,9 +1,13 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Button from './Button'
 import navbaricon from '../assets/navbaricon.svg'
+import { useCart } from '../context/CartContext'
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [accountOpen, setAccountOpen] = useState(false)
+  const { itemCount, wishlist } = useCart()
   const links = [
     ['Home', '#home'],
     ['Deals', '#deals'],
@@ -28,7 +32,7 @@ const Navbar = () => {
       </ul>
 
       <div className="flex items-center gap-2 font-[Poppins,sans-serif] text-[11px] text-[#484848] sm:gap-4 lg:gap-8">
-        <a href="#sign-in" className="hidden cursor-pointer whitespace-nowrap no-underline hover:text-black sm:inline">Sign in</a>
+        <button type="button" aria-expanded={accountOpen} onClick={() => setAccountOpen((open) => !open)} className="hidden cursor-pointer border-0 bg-transparent p-0 font-[inherit] text-inherit sm:inline">{accountOpen ? 'Close' : 'Sign in'}</button>
         <Button onClick={() => document.getElementById('subscribe')?.scrollIntoView({ behavior: 'smooth' })}>Sign Up</Button>
         <button
           type="button"
@@ -61,6 +65,16 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+      )}
+      {accountOpen && (
+        <div className="absolute right-4 top-full z-40 w-64 rounded border border-[#eee] bg-white p-4 text-left shadow-lg sm:right-6 lg:right-8">
+          <p className="font-serif text-base text-[#222]">Guest account</p>
+          <p className="mt-1 text-[11px] leading-5 text-[#777]">Sign-in is not connected yet. Your cart and saved items stay available on this device.</p>
+          <div className="mt-3 flex justify-between gap-3 text-[11px]">
+            <Link to="/cart" onClick={() => setAccountOpen(false)} className="text-[#333] underline">Cart ({itemCount})</Link>
+            <Link to="/wishlist" onClick={() => setAccountOpen(false)} className="text-[#333] underline">Wishlist ({wishlist.length})</Link>
+          </div>
+        </div>
       )}
     </nav>
     </header>

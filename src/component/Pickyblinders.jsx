@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Button from './Button'
 import pickyBlindersImage from '../assets/pickyblinders1.svg'
 
@@ -15,9 +16,19 @@ const Pickyblinders = ({
   onSizeChange,
   price = '$100.00',
   buttonText = 'Buy Now',
-  onBuyNow = () => document.getElementById('new-arrivals')?.scrollIntoView({ behavior: 'smooth' }),
+  onBuyNow,
 }) => {
   const [selectedSize, setSelectedSize] = useState(size)
+  const navigate = useNavigate()
+  const handleBuyNow = () => {
+    if (onBuyNow) {
+      onBuyNow()
+      return
+    }
+    const productSection = document.getElementById('new-arrivals')
+    if (productSection) productSection.scrollIntoView({ behavior: 'smooth' })
+    else navigate('/shop')
+  }
   const chooseSize = (option) => {
     setSelectedSize(option)
     onSizeChange?.(option)
@@ -67,7 +78,7 @@ const Pickyblinders = ({
         </div>
 
         <p className="mt-3 font-[Poppins,sans-serif] text-lg font-semibold text-black">{price}</p>
-        <Button onClick={onBuyNow} className="mt-3 !min-h-9 !min-w-[130px] !rounded-md !px-6 !py-3 !text-[10px]">
+        <Button onClick={handleBuyNow} className="mt-3 !min-h-9 !min-w-[130px] !rounded-md !px-6 !py-3 !text-[10px]">
           {buttonText}
         </Button>
       </div>

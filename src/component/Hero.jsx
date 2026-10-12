@@ -1,4 +1,4 @@
-import Button from './Button'
+﻿import { Link } from 'react-router-dom'
 import heroMiddleDown from '../assets/hero-middle-down.svg'
 import heroMiddleUp from '../assets/hero-middle-up.png'
 import heroLeft from '../assets/hero-left.svg'
@@ -40,7 +40,7 @@ const Hero = () => (
           <p className="mt-3 pb-5 font-[Poppins,sans-serif] text-[12px] tracking-[0.12em] text-[#484848]">
             NEW COLLECTION
           </p>
-          <Button onClick={() => document.getElementById('new-arrivals')?.scrollIntoView({ behavior: 'smooth' })} className="mt-4 !px-[60px] !py-[20px]">SHOP NOW</Button>
+          <Link to="/shop" className="mt-4 inline-flex min-h-11 min-w-24 cursor-pointer items-center justify-center rounded-[7px] bg-black px-8 py-3 text-xs leading-none text-white no-underline shadow-[0_3px_8px_rgb(0_0_0_/_22%)] transition hover:bg-[#222] sm:px-12 sm:py-4 lg:px-[60px] lg:py-5">SHOP NOW</Link>
         </div>
 
         <img
@@ -80,3 +80,5 @@ const Hero = () => (
 )
 
 export default Hero
+
+

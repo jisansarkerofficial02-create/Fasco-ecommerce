@@ -20,18 +20,18 @@ const Customerratings = ({
   return (
     <section className="w-full bg-[#fafafa] py-14 sm:py-16" aria-labelledby="customer-ratings-title">
       <div className="container mx-auto">
-        <header className="mx-auto max-w-[600px] px-4 text-center">
+        <header className="mx-auto max-w-150 px-4 text-center">
           <h2 id="customer-ratings-title" className="font-serif text-3xl font-semibold text-[#484848] sm:text-[32px]">
             {title}
           </h2>
-          <p className="mx-auto mt-3 max-w-[460px] font-[Poppins,sans-serif] text-[11px] leading-5 text-[#888]">
+          <p className="mx-auto mt-3 max-w-115 font-[Poppins,sans-serif] text-[11px] leading-5 text-[#888]">
             {description}
           </p>
         </header>
 
         {reviews.length > 0 && (
           <>
-            <div className="relative mx-auto mt-8 h-[330px] max-w-[1000px] overflow-hidden sm:mt-10 sm:h-[390px] lg:h-[430px]">
+            <div className="relative mx-auto mt-8 h-82.25 max-w-250 overflow-hidden sm:mt-10 sm:h-97.5 lg:h-107.5">
               {reviews.map((review, index) => {
                 const offset = index - activeIndex
                 if (Math.abs(offset) > 1) return null
