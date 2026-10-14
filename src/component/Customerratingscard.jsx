@@ -16,7 +16,7 @@ const Customerratingscard = ({
         <div className={`relative shrink-0 ${compact ? 'h-[84px] w-[84px] sm:h-[110px] sm:w-[110px] md:h-[150px] md:w-[150px]' : 'h-[min(52vw,220px)] w-[min(52vw,220px)]'}`}>
           <div aria-hidden="true" className={`absolute h-full w-full bg-[#dedede] ${compact ? '-bottom-3 -left-3' : '-bottom-5 -left-5'}`} />
           <div className="relative h-full w-full overflow-hidden bg-[#e8e8e8]">
-            {image && <img src={image} alt={imageAlt || name} className="h-full w-full object-cover" />}
+            {image && <img src={image} alt={imageAlt || name} loading="lazy" decoding="async" className="h-full w-full object-cover" />}
           </div>
         </div>
       </div>

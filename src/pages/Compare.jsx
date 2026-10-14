@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 import ShopNavbar from '../component/ShopNow/ShopNavbar'
 import Subscribe from '../component/Subscribe'
 import Footer from '../component/Footer'
-import subscribeLeft from '../assets/subscribe1.svg'
-import subscribeRight from '../assets/subscribe2.svg'
+import subscribeLeft from '../assets/optimized/subscribe1.webp'
+import subscribeRight from '../assets/optimized/subscribe2.webp'
 import products from '../data/products'
 import { useCart } from '../context/CartContext'
 
@@ -32,7 +32,7 @@ const Compare = () => {
             <table className="w-full min-w-[580px] border-collapse text-left text-xs">
               <thead><tr><th className="w-32 border-b border-[#ddd] p-3 font-medium">Details</th>{comparedProducts.map((product) => <th key={product.id} className="border-b border-[#ddd] p-3 font-medium">{product.name}</th>)}</tr></thead>
               <tbody>
-                <tr><th className="p-3 font-medium">Product</th>{comparedProducts.map((product) => <td key={product.id} className="p-3"><Link to={`/product/${product.id}`} className="block w-28 text-inherit no-underline sm:w-36"><img src={product.image} alt={product.name} className="aspect-[3/4] w-full object-cover" /><span className="mt-2 block">View details</span></Link></td>)}</tr>
+                <tr><th className="p-3 font-medium">Product</th>{comparedProducts.map((product) => <td key={product.id} className="p-3"><Link to={`/product/${product.id}`} className="block w-28 text-inherit no-underline sm:w-36"><img src={product.image} alt={product.name} loading="lazy" decoding="async" className="aspect-[3/4] w-full object-cover" /><span className="mt-2 block">View details</span></Link></td>)}</tr>
                 {rows.map(([label, value]) => <tr key={label} className="border-t border-[#eee]"><th className="p-3 font-medium">{label}</th>{comparedProducts.map((product) => <td key={product.id} className="p-3 text-[#555]">{value(product)}</td>)}</tr>)}
                 <tr className="border-t border-[#eee]"><th className="p-3 font-medium">Actions</th>{comparedProducts.map((product) => <td key={product.id} className="p-3"><button type="button" onClick={() => toggleCompare(product.id)} className="text-[11px] text-[#777] underline">Remove</button></td>)}</tr>
               </tbody>

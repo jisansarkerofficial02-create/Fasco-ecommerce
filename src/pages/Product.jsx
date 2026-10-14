@@ -6,8 +6,8 @@ import Pickyblinders from '../component/Pickyblinders'
 import ProductDetails from '../component/ProductPage/ProductDetails'
 import ShopNavbar from '../component/ShopNow/ShopNavbar'
 import Subscribe from '../component/Subscribe'
-import subscribeLeft from '../assets/subscribe1.svg'
-import subscribeRight from '../assets/subscribe2.svg'
+import subscribeLeft from '../assets/optimized/subscribe1.webp'
+import subscribeRight from '../assets/optimized/subscribe2.webp'
 import products from '../data/products'
 
 const Product = () => {

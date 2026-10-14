@@ -4,8 +4,8 @@ import ShopNavbar from '../component/ShopNow/ShopNavbar'
 import Subscribe from '../component/Subscribe'
 import Footer from '../component/Footer'
 import productIcon from '../assets/product-icon.png'
-import subscribeLeft from '../assets/subscribe1.svg'
-import subscribeRight from '../assets/subscribe2.svg'
+import subscribeLeft from '../assets/optimized/subscribe1.webp'
+import subscribeRight from '../assets/optimized/subscribe2.webp'
 import { useCart } from '../context/CartContext'
 
 const FREE_SHIPPING_THRESHOLD = 75

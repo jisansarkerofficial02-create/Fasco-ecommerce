@@ -1,8 +1,8 @@
 ﻿import { Link } from 'react-router-dom'
-import heroMiddleDown from '../assets/hero-middle-down.svg'
+import heroMiddleDown from '../assets/optimized/hero-middle-down.webp'
 import heroMiddleUp from '../assets/hero-middle-up.png'
-import heroLeft from '../assets/hero-left.svg'
-import heroRight from '../assets/hero-right.svg'
+import heroLeft from '../assets/optimized/hero-left.webp'
+import heroRight from '../assets/optimized/hero-right.webp'
 import heroShop from '../assets/hero-shop.svg'
 import heroArrow from '../assets/hero-arrow.svg'
 
@@ -13,6 +13,9 @@ const Hero = () => (
         <img
           src={heroLeft}
           alt="Model wearing the new collection"
+          loading="eager"
+          fetchPriority="low"
+          decoding="async"
           className="absolute inset-x-0 bottom-0 h-[75.4%] w-full object-contain lg:h-[570px]"
         />
       </div>
@@ -21,6 +24,9 @@ const Hero = () => (
         <img
           src={heroMiddleUp}
           alt="Four models wearing the new collection"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           className="h-auto w-full rounded-lg"
         />
 
@@ -46,6 +52,8 @@ const Hero = () => (
         <img
           src={heroMiddleDown}
           alt="Two models wearing the new collection"
+          loading="lazy"
+          decoding="async"
           className="h-auto w-full rounded-lg"
         />
       </div>
@@ -54,6 +62,9 @@ const Hero = () => (
         <img
           src={heroRight}
           alt="Model wearing the new collection"
+          loading="eager"
+          fetchPriority="low"
+          decoding="async"
           className="absolute inset-x-0 bottom-0 h-[75.4%] w-full object-contain lg:h-[570px]"
         />
       </div>
@@ -80,5 +91,3 @@ const Hero = () => (
 )
 
 export default Hero
-
-

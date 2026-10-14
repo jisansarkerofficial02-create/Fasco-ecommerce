@@ -12,8 +12,8 @@ import Footer from '../component/Footer'
 import customerRating1 from '../assets/customer-ratings1.png'
 import customerRating2 from '../assets/customer-ratings2.png'
 import customerRating3 from '../assets/customer-ratings3.png'
-import subscribeLeft from '../assets/subscribe1.svg'
-import subscribeRight from '../assets/subscribe2.svg'
+import subscribeLeft from '../assets/optimized/subscribe1.webp'
+import subscribeRight from '../assets/optimized/subscribe2.webp'
 
 const Home = () => {
   return (
@@ -38,4 +38,3 @@ const Home = () => {
 }
 
 export default Home
-

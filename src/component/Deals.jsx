@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import Button from './Button'
 import dealsArrowLeft from '../assets/deals-arrow-left.png'
 import dealsArrowRight from '../assets/deals-arrow-right.png'
-import dealsImage1 from '../assets/deals-image1.svg'
-import dealsImage2 from '../assets/deals-image2.svg'
-import dealsImage3 from '../assets/deals-image3.svg'
+import dealsImage1 from '../assets/optimized/deals-image1.webp'
+import dealsImage2 from '../assets/optimized/deals-image2.webp'
+import dealsImage3 from '../assets/optimized/deals-image3.webp'
 
 const digitSegments = {
   0: ['top', 'upperLeft', 'upperRight', 'lowerLeft', 'lowerRight', 'bottom'],
@@ -177,6 +177,8 @@ const Deals = ({
                 <img
                   src={slide.image}
                   alt={slide.alt || slide.offer || `Deal ${index + 1}`}
+                  loading="lazy"
+                  decoding="async"
                   className={`h-full w-full object-cover ${index === 2 ? 'object-top' : 'object-center'}`}
                 />
               )}

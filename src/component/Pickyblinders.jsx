@@ -39,7 +39,7 @@ const Pickyblinders = ({
     <div className="relative grid min-h-[360px] grid-cols-1 overflow-hidden bg-[#d9d9d9] lg:grid-cols-[55%_45%]">
       <div className="relative min-h-[280px] overflow-hidden bg-[#f8f8f8] sm:min-h-[360px] lg:min-h-[360px] lg:[clip-path:polygon(0_0,100%_0,82%_100%,0_100%)]">
         {image && (
-          <img src={image} alt={imageAlt} className="absolute inset-0 h-full w-full object-fill" />
+          <img src={image} alt={imageAlt} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-fill" />
         )}
       </div>
 

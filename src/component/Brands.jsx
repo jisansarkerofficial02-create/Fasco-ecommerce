@@ -24,6 +24,8 @@ const Brands = ({ brands = defaultBrands }) => (
             <img
               src={brand.image}
               alt={brand.name}
+              loading="lazy"
+              decoding="async"
               className="max-h-10 max-w-[160px] object-contain"
             />
           ) : (

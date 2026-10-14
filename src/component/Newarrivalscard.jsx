@@ -15,7 +15,7 @@ const Newarrivalscard = ({
     <article className={`w-full max-w-[340px] rounded-xl bg-white p-4 shadow-[0_8px_28px_rgb(0_0_0_/_7%)] ${className}`}>
       <div className="aspect-[336/244] w-full overflow-hidden rounded-md bg-[#e8e3e0]">
         {image && (
-          <img src={image} alt={imageAlt || name} className="h-full w-full object-cover" />
+          <img src={image} alt={imageAlt || name} loading="lazy" decoding="async" className="h-full w-full object-cover" />
         )}
       </div>
 

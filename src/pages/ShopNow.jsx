@@ -5,8 +5,8 @@ import Pickyblinders from '../component/Pickyblinders'
 import Packages from '../component/Packages'
 import Instagram from '../component/Instagram'
 import Subscribe from '../component/Subscribe'
-import subscribeLeft from '../assets/subscribe1.svg'
-import subscribeRight from '../assets/subscribe2.svg'
+import subscribeLeft from '../assets/optimized/subscribe1.webp'
+import subscribeRight from '../assets/optimized/subscribe2.webp'
 
 const ShopNow = () => (
   <main>

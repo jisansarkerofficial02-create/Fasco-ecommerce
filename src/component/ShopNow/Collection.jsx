@@ -1,7 +1,7 @@
 ﻿import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import shopImage1 from '../../assets/shop-1.svg'
-import shopImage2 from '../../assets/shop-2.svg'
+import shopImage1 from '../../assets/optimized/shop-1.webp'
+import shopImage2 from '../../assets/optimized/shop-2.webp'
 import shopImage3 from '../../assets/shop-3.png'
 import shopImage4 from '../../assets/shop-4.png'
 import shopImage5 from '../../assets/shop-5.png'
@@ -174,7 +174,7 @@ const Collection = () => {
               {shownProducts.map((product) => (
                 <Link key={product.id} to={'/product/' + product.id} className="min-w-0 text-inherit no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black">
                   <div className="aspect-[3/4] overflow-hidden bg-[#f1f1f1]">
-                    <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
+                    <img src={product.image} alt={product.name} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                   </div>
                   <h3 className="mt-2 truncate text-[11px] font-medium text-[#222]">{product.name}</h3>
                   <p className="mt-0.5 text-[10px] text-[#333]">{'$' + product.price.toFixed(2)}</p>
@@ -204,6 +204,5 @@ const Collection = () => {
 }
 
 export default Collection
-
 
 

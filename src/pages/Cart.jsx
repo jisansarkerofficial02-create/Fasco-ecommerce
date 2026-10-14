@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 import Footer from '../component/Footer'
 import ShopNavbar from '../component/ShopNow/ShopNavbar'
 import Subscribe from '../component/Subscribe'
-import subscribeLeft from '../assets/subscribe1.svg'
-import subscribeRight from '../assets/subscribe2.svg'
+import subscribeLeft from '../assets/optimized/subscribe1.webp'
+import subscribeRight from '../assets/optimized/subscribe2.webp'
 import { useCart } from '../context/CartContext'
 
 const GIFT_WRAP_PRICE = 10
@@ -39,7 +39,7 @@ const Cart = () => {
                     <li key={item.key} className="grid grid-cols-2 items-start gap-x-4 gap-y-3 border-b border-[#ddd] py-4 sm:grid-cols-[minmax(0,1fr)_100px_130px_100px] sm:gap-5 sm:border-0 sm:py-5">
                   <div className="col-span-2 flex min-w-0 gap-3 sm:col-span-1 sm:gap-4">
                     <Link to={'/product/' + item.productId} className="h-[88px] w-[64px] shrink-0 overflow-hidden bg-[#f1f1f1] sm:h-[105px] sm:w-[78px]">
-                      <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
+                      <img src={item.image} alt={item.name} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                     </Link>
                     <div className="min-w-0 pt-1">
                       <Link to={'/product/' + item.productId} className="block text-[10px] font-medium leading-4 text-[#222] no-underline sm:text-xs">{item.name}</Link>

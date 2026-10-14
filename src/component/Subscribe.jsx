@@ -29,7 +29,7 @@ const Subscribe = ({
     <section id={sectionId} className={`container py-12 sm:py-16 lg:py-20 ${className}`} aria-labelledby={emailId}>
       <div className="relative mx-auto grid min-h-[350px] max-w-[1200px] grid-cols-1 items-center gap-6 lg:min-h-[500px] lg:grid-cols-[minmax(0,1fr)_minmax(400px,1.6fr)_minmax(0,1fr)] lg:gap-5">
         <div className="relative hidden h-full min-h-[350px] items-end justify-center lg:flex">
-          {leftImage && <img src={leftImage} alt={leftImageAlt} className="h-full max-h-[470px] w-full object-contain object-bottom" />}
+          {leftImage && <img src={leftImage} alt={leftImageAlt} loading="lazy" decoding="async" className="h-full max-h-[470px] w-full object-contain object-bottom" />}
         </div>
 
         <div className="z-10 flex min-w-0 flex-col items-center justify-center text-center">
@@ -57,7 +57,7 @@ const Subscribe = ({
         </div>
 
         <div className="relative hidden h-full min-h-[350px] items-end justify-center lg:flex">
-          {rightImage && <img src={rightImage} alt={rightImageAlt} className="h-full max-h-[470px] w-full object-contain object-bottom" />}
+          {rightImage && <img src={rightImage} alt={rightImageAlt} loading="lazy" decoding="async" className="h-full max-h-[470px] w-full object-contain object-bottom" />}
         </div>
       </div>
     </section>

@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 import ShopNavbar from '../component/ShopNow/ShopNavbar'
 import Subscribe from '../component/Subscribe'
 import Footer from '../component/Footer'
-import subscribeLeft from '../assets/subscribe1.svg'
-import subscribeRight from '../assets/subscribe2.svg'
+import subscribeLeft from '../assets/optimized/subscribe1.webp'
+import subscribeRight from '../assets/optimized/subscribe2.webp'
 import products from '../data/products'
 import { useCart } from '../context/CartContext'
 
@@ -25,7 +25,7 @@ const Wishlist = () => {
             {savedProducts.map((product) => (
               <article key={product.id} className="min-w-0">
                 <Link to={`/product/${product.id}`} className="block aspect-[3/4] overflow-hidden bg-[#f2f2f2]">
-                  <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
+                  <img src={product.image} alt={product.name} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 </Link>
                 <div className="flex items-start justify-between gap-2 pt-2">
                   <div className="min-w-0">

@@ -1,5 +1,5 @@
-﻿import shopImage1 from '../assets/shop-1.svg'
-import shopImage2 from '../assets/shop-2.svg'
+import shopImage1 from '../assets/optimized/shop-1.webp'
+import shopImage2 from '../assets/optimized/shop-2.webp'
 import shopImage3 from '../assets/shop-3.png'
 import shopImage4 from '../assets/shop-4.png'
 import shopImage5 from '../assets/shop-5.png'

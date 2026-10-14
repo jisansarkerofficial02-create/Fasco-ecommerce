@@ -17,7 +17,7 @@ const Packages = ({ packages = defaultPackages, className = '' }) => (
         <div key={item.id || item.title || index} className="flex items-center justify-center gap-3">
           <div className="flex h-9 w-9 shrink-0 items-center justify-center">
             {item.icon ? (
-              <img src={item.icon} alt="" className="h-full w-full object-contain" />
+              <img src={item.icon} alt="" loading="lazy" decoding="async" className="h-full w-full object-contain" />
             ) : (
               <span aria-hidden="true" className="h-full w-full" />
             )}

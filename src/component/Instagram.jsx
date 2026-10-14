@@ -1,10 +1,10 @@
-import instagram1 from '../assets/instagram1.svg'
-import instagram2 from '../assets/instagram2.svg'
-import instagram3 from '../assets/instagram3.svg'
-import instagram4 from '../assets/instagram4.svg'
-import instagram5 from '../assets/instagram5.svg'
-import instagram6 from '../assets/instagram6.svg'
-import instagram7 from '../assets/instagram7.svg'
+import instagram1 from '../assets/optimized/instagram1.webp'
+import instagram2 from '../assets/optimized/instagram2.webp'
+import instagram3 from '../assets/optimized/instagram3.webp'
+import instagram4 from '../assets/optimized/instagram4.webp'
+import instagram5 from '../assets/optimized/instagram5.webp'
+import instagram6 from '../assets/optimized/instagram6.webp'
+import instagram7 from '../assets/optimized/instagram7.webp'
 
 const defaultImages = Array.from({ length: 7 }, (_, index) => ({
   id: `instagram-${index + 1}`,
@@ -43,7 +43,7 @@ const Instagram = ({
               style={{ '--desktop-basis': width || `${100 / images.length}%` }}
               className="relative aspect-[4/5] min-w-0 overflow-hidden bg-[#e7e4e2] transition-transform duration-200 hover:z-10 hover:scale-[1.03] sm:aspect-[3/4] lg:h-full lg:flex-[0_0_var(--desktop-basis)] lg:aspect-auto"
             >
-              {image && <img src={image} alt={alt} className="h-full w-full object-contain" />}
+              {image && <img src={image} alt={alt} loading="lazy" decoding="async" className="h-full w-full object-contain" />}
             </div>
           )
         })}

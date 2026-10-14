@@ -2,12 +2,12 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from './Button'
 import Newarrivalscard from './Newarrivalscard'
-import newarrivals1 from '../assets/newarrivals1.svg'
-import newarrivals2 from '../assets/newarrivals2.svg'
-import newarrivals3 from '../assets/newarrivals3.svg'
-import newarrivals4 from '../assets/newarrivals4.svg'
-import newarrivals5 from '../assets/newarrivals5.svg'
-import newarrivals6 from '../assets/newarrivals6.svg'
+import newarrivals1 from '../assets/optimized/newarrivals1.webp'
+import newarrivals2 from '../assets/optimized/newarrivals2.webp'
+import newarrivals3 from '../assets/optimized/newarrivals3.webp'
+import newarrivals4 from '../assets/optimized/newarrivals4.webp'
+import newarrivals5 from '../assets/optimized/newarrivals5.webp'
+import newarrivals6 from '../assets/optimized/newarrivals6.webp'
 
 const defaultCategories = [
   "Men's Fashion",
